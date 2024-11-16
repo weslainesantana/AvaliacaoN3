@@ -7,7 +7,7 @@ import com.weslaine.avaliacao_n3.dtos.MedicineRequestDto;
 import com.weslaine.avaliacao_n3.dtos.MedicineResponseDto;
 import com.weslaine.avaliacao_n3.models.MedicineEntity;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface MedicineMapper {
     MedicineResponseDto toDto(MedicineEntity medicineEntity);
     @Mapping(target = "id", ignore = true)

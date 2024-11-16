@@ -39,12 +39,18 @@ public class MedicineService {
 
     public MedicineResponseDto update(Long id, MedicineRequestDto medicineRequestDto){
         Optional<MedicineEntity> medicine = medicineRepository.findById(id);
-        if (medicine.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Medicamente não encontrado");
+        if(medicine.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Medicamente não encontrado");
         
         MedicineEntity medicineEntity = medicineMapper.toEntity(medicineRequestDto);
         medicineEntity.setId(id);
         return medicineMapper.toDto(medicineRepository.save(medicineEntity));
     }
 
+    public MedicineResponseDto delete(Long id){
+        Optional<MedicineEntity> medicine = medicineRepository.findById(id);
+        if(medicine.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Medicamento não encontrado"); 
+        medicineRepository.delete(medicine.get());
+        return medicineMapper.toDto(medicine.get());
+    }
 }   
 
