@@ -1,4 +1,4 @@
-## Documentação da API REST
+## Documentação de Medicamentos
 
 ### Base URL
 ```
@@ -163,5 +163,165 @@ Deleta um medicamento existente.
     "description": "descrição",
     "dose": "500ml",
     "expirationDate": "06/07/2023"
+}
+```
+
+## Documentação de Pacientes
+
+### Base URL
+```
+http://localhost:8080
+```
+
+---
+
+### Endpoints
+
+#### 1. **POST /patients**
+Cria um novo paciente.
+
+**Request Body**:
+```json
+{
+    "name": "Fulano",
+    "age": 24,
+    "medicalHistory": "Asma"
+}
+```
+
+**Response**:
+- **Status Code**: 201 Created  
+- **Body**:
+```json
+{
+    "id": 1,
+    "name": "Fulano",
+    "age": "24",
+    "medicalHistory": "Asma"
+}
+```
+
+---
+
+#### 2. **GET /patients?page=pageNumber&size=pageSize**
+Retorna uma lista paginada de pacientes.
+
+**Parâmetros de Query**:
+- `page` (opcional): Número da página (padrão: `0`).
+- `size` (opcional): Número de itens por página (padrão: `10`).
+
+**Response**:
+- **Status Code**: 200 OK  
+- **Body**:
+```json
+{
+    "content": [
+        {
+            "id": 1,
+            "name": "Fulano",
+            "age": "24",
+            "medicalHistory": "Asma"
+        },
+        {
+            "id": 2,
+            "name": "Ciclano",
+            "age": "30",
+            "medicalHistory": "Hipertensão"
+        }
+    ],
+    "pageable": {
+        "pageNumber": 0,
+        "pageSize": 10,
+        "sort": {
+            "sorted": false,
+            "empty": true,
+            "unsorted": true
+        },
+        "offset": 0,
+        "paged": true,
+        "unpaged": false
+    },
+    "totalPages": 1,
+    "totalElements": 2,
+    "last": true,
+    "size": 10,
+    "number": 0,
+    "sort": {
+        "sorted": false,
+        "empty": true,
+        "unsorted": true
+    },
+    "numberOfElements": 2,
+    "first": true,
+    "empty": false
+}
+```
+
+---
+
+#### 3. **GET /patients/{id}**
+Retorna os detalhes de um paciente específico.
+
+**Path Parameter**:
+- `id`: ID do paciente.
+
+**Response**:
+- **Status Code**: 200 OK  
+- **Body**:
+```json
+{
+    "id": 1,
+    "name": "Fulano",
+    "age": "24",
+    "medicalHistory": "Asma"
+}
+```
+
+---
+
+#### 4. **PUT /patients/{id}**
+Atualiza os dados de um paciente existente.
+
+**Path Parameter**:
+- `id`: ID do paciente.
+
+**Request Body**:
+```json
+{
+    "name": "Ciclano",
+    "age": 24,
+    "medicalHistory": "atualizado"
+}
+```
+
+**Response**:
+- **Status Code**: 200 OK  
+- **Body**:
+```json
+{
+    "id": 1,
+    "name": "Ciclano",
+    "age": "24",
+    "medicalHistory": "atualizado"
+}
+```
+
+---
+
+#### 5. **DELETE /patients/{id}**
+Deleta um paciente existente.
+
+**Path Parameter**:
+- `id`: ID do paciente.
+
+**Response**:
+- **Status Code**: 200 OK  
+- **Body**:
+```json
+{
+    "id": 1,
+    "name": "Fulano",
+    "age": "24",
+    "medicalHistory": "Asma"
 }
 ```
