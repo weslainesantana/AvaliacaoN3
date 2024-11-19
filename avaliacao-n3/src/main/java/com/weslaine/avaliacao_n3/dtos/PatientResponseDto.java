@@ -4,5 +4,7 @@ public record PatientResponseDto(
         Long id,
         String name,
         String age,
-        String medicalHistory) {
+        String medicalHistory
+) {
+        
 }

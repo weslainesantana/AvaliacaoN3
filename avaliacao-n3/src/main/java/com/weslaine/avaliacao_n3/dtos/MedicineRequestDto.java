@@ -1,6 +1,7 @@
 package com.weslaine.avaliacao_n3.dtos;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -16,7 +17,7 @@ public record MedicineRequestDto(
     String dose, 
     @JsonFormat(pattern = "dd/MM/yyyy")
     @NotNull(message = "O campo Data de validade não pode estar nula")
-    Date expirationDate
+    LocalDate expirationDate
 ) {
     
 }

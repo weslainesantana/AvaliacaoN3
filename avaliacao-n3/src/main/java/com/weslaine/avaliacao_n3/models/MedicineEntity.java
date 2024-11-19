@@ -1,6 +1,9 @@
 package com.weslaine.avaliacao_n3.models;
 
 import java.sql.Date;
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,5 +28,5 @@ public class MedicineEntity {
     private String name;
     private String description;
     private String dose;
-    private Date expirationDate;
+    private LocalDate expirationDate;
 }
