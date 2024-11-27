@@ -1,4 +1,4 @@
-## Equipe: João Fontanella, Weslaine Santana e Ana Beatriz Meller.
+### Equipe: João Fontanella, Weslaine Santana e Ana Beatriz Meller.
 
 ## Documentação de Medicamentos
 
